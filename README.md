@@ -15,14 +15,9 @@ _软著登字第15220256号_
    <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
    <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 </p>
-<div style="text-align: right;">
-	<i>
-        -- by Yongqi Liang
-    </i>
-</div>
-
-
-
+<p align="center">
+   by Yongqi Liang
+</p>
 
 
 #### 📖 产品介绍
