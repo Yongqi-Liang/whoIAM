@@ -1,8 +1,8 @@
 _软著登字第15220256号_
 
 <div style="align: center;">
-    <img src="./logo.png" alt="Logo" style="width: 100px; height: auto;">
-    <p style="font-size: 20px;font-weight: bold">whoIAM - 一种支持多因素认证和私有化部署的企业数字身份管控平台</p>
+    <img src="./logo.png" alt="Logo" style="width: 100px; height: auto;align: center">
+    <p style="font-size: 20px;font-weight: bold;align: center">whoIAM - 一种支持多因素认证和私有化部署的企业数字身份管控平台</p>
     <p align="center">
       <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
       <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
