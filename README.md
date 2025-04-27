@@ -16,9 +16,8 @@ _软著登字第15220256号_
    <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
 </p>
 <p align="center">
-   by Yongqi Liang
+   <i>by <b>Yongqi Liang</b></i>
 </p>
-
 
 #### 📖 产品介绍
 
