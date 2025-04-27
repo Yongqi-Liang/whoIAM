@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录到应用 - whoIAM</title>
+    <script src="/js/vue.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0d85ef;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .login-container h1 {
+            font-size: 32px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        .login-container .form-group {
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .login-container input,
+        .login-container button {
+            width: calc(100% - 20px); /* 计算宽度，防止超出容器 */
+            box-sizing: border-box;  /* 包括 padding 和 border */
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .login-container input {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .login-container button {
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .app-info {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="login-container">
+    <h1>登录到 <span>{{ appName }}</span></h1>
+    <form @submit.prevent="handleSubmit">
+        <div class="form-group">
+            <label for="userId">登录名</label>
+            <input type="text" id="userId" v-model="userId" placeholder="登录名" required>
+        </div>
+
+        <div class="form-group">
+            <label for="otp">一次性密码(One-Time Password,OTP)</label>
+            <input type="text" id="otp" v-model="otp" placeholder="一次性密码(One-Time Password,OTP)" required>
+        </div>
+
+        <button type="submit">登录到 <span>{{ appName }}</span></button>
+    </form>
+
+    <div class="error-message" v-if="errorMessage">{{ errorMessage }}</div>
+
+    <div class="app-info">
+        <p><strong>应用 ID:</strong> {{ appId }}</p>
+        <p><strong>描述:</strong> {{ appDescription }}</p>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            userId: '',
+            otp: '',
+            errorMessage: '',
+            appName: '[[${appName}]]',
+            appId: '[[${appId}]]',
+            appDescription: '[[${appDescription}]]',
+        },
+        methods: {
+            async handleSubmit() {
+                const loginRequest = {
+                    userId: this.userId,
+                    otp: this.otp,
+                    applicationId: this.appId
+                };
+
+                try {
+                    const response = await fetch('/api/AppLogin', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(loginRequest)
+                    });
+                    const result = await response.json();
+
+                    // 清除之前的错误信息
+                    this.errorMessage = '';
+
+                    // 检查登录是否成功
+                    if (result.code === 'applogin_00') {
+                        /**
+                         * 提取 Token 并存储到 sessionStorage
+                         *
+                         * 如何读取 Token:
+                         * const token = sessionStorage.getItem('authToken');
+                         * if (token) {
+                         *     console.log('读取到的 Token:', token);
+                         * } else {
+                         *     console.log('Token 不存在或未存储');
+                         * }
+                         */
+                        if (result.token) {
+                            sessionStorage.setItem('authToken', result.token);
+                            console.log('Token 已存储:', result.token);
+                        } else {
+                            console.error('登录成功但未返回 token');
+                        }
+
+
+                        // 跳转到指定 URI
+                        if (result.URI) {
+                            window.location.href = result.URI;
+                        } else {
+                            console.error('登录成功但未返回 URI');
+                        }
+                    } else {
+                        // 显示错误消息
+                        this.errorMessage = result.message;
+                    }
+                } catch (error) {
+                    // 处理异常
+                    this.errorMessage = '系统错误，请稍后再试';
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

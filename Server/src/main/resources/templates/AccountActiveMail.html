@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>领取你的激活码 - whoIAM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .email-header img {
+            width: 100px;
+        }
+
+        .email-body {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .verification-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            background-color: #f0f8f1;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .email-footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .email-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .email-footer p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <div class="email-header">
+        <!-- img src="https://example.com/logo.png" alt="IAM系统" /-->
+    </div>
+
+    <div class="email-body">
+        <h2>欢迎使用whoIAM！</h2>
+        <p>你的组织在whoIAM系统中为你添加了身份，为了完成您的账号激活流程，请使用以下激活码前往whoIAM身份验证器客户端进行账户激活：</p>
+
+        <div class="verification-code">
+            <span th:text="${code}"></span>
+        </div>
+
+        <p>以下是你的组织账户信息：</p>
+        <table>
+            <tr>
+                <td>用户登录id：</td>
+                <td><span th:text="${uid}"></span></td>
+            </tr>
+            <tr>
+                <td>隶属用户组：</td>
+                <td><span th:text="${ugp}"></span></td>
+            <td>
+        </table>
+
+
+        <p>如果您完成了此操作，请忽略此邮件。</p>
+
+    </div>
+
+    <div class="email-footer">
+        <p>&copy; 2025 whoIAM. 保留所有权利。</p>
+        <p><a href="https://example.com/unsubscribe">点击取消订阅</a></p>
+    </div>
+</div>
+
+</body>
+</html>
