@@ -1,6 +1,6 @@
 _软著登字第15220256号_
 
-<div style="text-align: center;">
+<div style="align: center;">
     <img src="./logo.png" alt="Logo" style="width: 100px; height: auto;">
     <p style="font-size: 20px;font-weight: bold">whoIAM - 一种支持多因素认证和私有化部署的企业数字身份管控平台</p>
     <p align="center">
