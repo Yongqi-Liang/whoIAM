@@ -1,6 +1,9 @@
 [中](../README.md) | En
 
-_Registration No.: Soft Copyright 15220256_
+
+Registered with the **China Copyright Protection Center**
+
+Software Copyright Registration No.: **15220256**
 
 <div style="text-align: center;">
     <img src="../logo.png" alt="Logo" style="width: 100px; height: auto;">
