@@ -1,3 +1,5 @@
+中 | [En](./i18n/README_en.md)
+
 _软著登字第 **15220256** 号_
 
 <p align="center">
