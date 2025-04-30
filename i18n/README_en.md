@@ -1,3 +1,5 @@
+[中](../README.md) | En
+
 _Registration No.: Soft Copyright 15220256_
 
 <div style="text-align: center;">
